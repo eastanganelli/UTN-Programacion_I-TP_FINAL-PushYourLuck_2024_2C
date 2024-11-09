@@ -15,20 +15,8 @@ int calcularPuntaje(int vDados[], int cantidad, int bloqueadores[], int cantidad
 int duplicaOpierde(int vDados[], int cantidad, int bloqueadores[], int cantidadBloqueadores) {
     int multiplicador = 1, repetidoDuplica = 0, cantidadBloqueados = 0;
     for(int i=0; i<cantidad; i++){
-        if(!estaBloqueado(vDados[i], bloqueadores, cantidadBloqueadores)) { //!false = true
-            // 3 < 4 [5 - 1]  Y  Actual == Siguiente
-            // 4 < 5 [5 - 1]  Y  Actual == Siguiente -> explota => vDados[5]
-            /*if(i < cantidad - 1 && vDados[i] == vDados[i+1]) {
-                    repetidoDuplica++;
-                }*/
-
+        if(!estaBloqueado(vDados[i], bloqueadores, cantidadBloqueadores)) {
             if(i > 0 && vDados[i] == vDados[i-1]) {
-                // 0 > 0  Y  Actual == Anterior => FALSO
-                //    F Y => skip
-                // 1 > 0  Y  Actual == Anterior -> vDados[0] = vDados[1-1] == vDados[1]
-                // 2 > 0  Y  Actual == Anterior -> vDados[1] = vDados[2-1] == vDados[2]
-                // 3 > 0  Y  Actual == Anterior -> vDados[2] = vDados[3-1] == vDados[3]
-                // 4 > 0  Y  Actual == Anterior -> vDados[3] = vDados[4-1] == vDados[4]
                 if(i == 1) {
                     repetidoDuplica = 2;
                 } else {
@@ -41,11 +29,9 @@ int duplicaOpierde(int vDados[], int cantidad, int bloqueadores[], int cantidadB
     }
 
     if(cantidadBloqueados == cantidad) {
-        // Todos bloqueados
         multiplicador = 0;
     }
     else if(repetidoDuplica == cantidad) {
-        // Doble puntaje rep
         multiplicador = 2;
     }
 
@@ -71,9 +57,7 @@ bool estaBloqueado(int dado, int bloqueadores[], int cantidadBloqueadores) {
     return false;
 }
 
-int tirarDado(){
-    return rand() % 6 + 1;
-}
+int tirarDado() { return rand() % 6 + 1; }
 
 void tiradaDeDados(int vDados[], int cantidad){
     for(int i=0; i<cantidad; i++){
@@ -81,32 +65,9 @@ void tiradaDeDados(int vDados[], int cantidad){
     }
 }
 
-void mostrarDados(int vDados[], int cantidad, int bloqueadores[], int cantidadBloqueadores){
-    string caraDados[6] = { "\u2680", "\u2681", "\u2682", "\u2683", "\u2684", "\u2685" };
-    //string caraDados[6] = {"1", "2", "3", "4", "5", "6"};
-    for(int i=0; i<cantidad; i++){
-        rlutil::setColor(rlutil::WHITE);
-        if(estaBloqueado(vDados[i], bloqueadores, cantidadBloqueadores)) {
-            rlutil::setColor(rlutil::RED);
-        }
-        cout<<" "<<caraDados[vDados[i] - 1];
-    }
-    rlutil::setColor(rlutil::WHITE);
-}
-
 void tiradaBloqueadores(int vDados[], int cantidad){
     for(int i=0; i<cantidad; i++){
         vDados[i] = tirarDado();
-    }
-}
-
-void mostrarBloqueadores(int vDados[], int cantidad) {
-    //Dado                     1          2          3        4         5         6
-    //Index                    0          1          2        3         4         5
-    string caraDados[6] = { "\u2680", "\u2681", "\u2682", "\u2683", "\u2684", "\u2685" };
-    //string caraDados[6] = {"1", "2", "3", "4", "5", "6"};
-    for(int i=0; i<cantidad; i++){
-        cout << " " << caraDados[vDados[i] - 1];
     }
 }
 
@@ -159,9 +120,8 @@ string ingresarNombre(bool soloJugador, int indice, int posX, int posY) {
     return nombre;
 }
 
-// void unJugador() {
 void juego(string nombres[], int puntajes[], int cantidadJugadores) {
-    const int CANTIDAD_RONDAS = 2, CANTIDAD_DADOS = 5, CANTIDAD_BLOQUEADORES = 2;
+    const int CANTIDAD_RONDAS = 6, CANTIDAD_DADOS = 5, CANTIDAD_BLOQUEADORES = 2;
     int dados[CANTIDAD_DADOS];
     char seguirJugando = 's';
     int ronda = 1, jugadorActual = 0;
@@ -195,7 +155,6 @@ void juego(string nombres[], int puntajes[], int cantidadJugadores) {
                 (void)imprimirEncabezado(ronda, nombres[jugadorActual], puntajes[jugadorActual], puntajeRonda, bloqueadores, CANTIDAD_BLOQUEADORES);
                 seguirJugando = imprimirTabla(posYCursorFila, tirada, dados, cantidadDadosActual, CANTIDAD_DADOS, bloqueadores, CANTIDAD_BLOQUEADORES, puntajeRonda, valorMutiplicador);
                 cantidadDadosActual = removerBloqueados(dados, cantidadDadosActual, bloqueadores, CANTIDAD_BLOQUEADORES);
-
 
                 if (cantidadDadosActual > 0 && (seguirJugando == 's' || seguirJugando == 'S')){
                     tirada++;
@@ -344,7 +303,6 @@ char imprimirTabla(int posY, int nroTirada, int dados[], int cantidadDados, int 
             } else if(estado == 2) {
                 rlutil::setColor(rlutil::BLACK);
             }
-            // imprimirDado(dados[j]);
             cout << dados[j];
             j++;
             rlutil::setColor(rlutil::WHITE);
@@ -377,9 +335,4 @@ char imprimirTabla(int posY, int nroTirada, int dados[], int cantidadDados, int 
     }
     rlutil::locate(posXEncabezado, posY + 4);
     return seguirJugando;
-}
-
-void imprimirDado(int nroDado) {
-    string caraDados[6] = { "\u2680", "\u2681", "\u2682", "\u2683", "\u2684", "\u2685" };
-    cout << caraDados[nroDado - 1];
 }

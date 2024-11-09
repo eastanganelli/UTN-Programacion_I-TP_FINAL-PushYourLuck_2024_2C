@@ -1,6 +1,5 @@
 # depslib dependency file v1.0
-1731023155 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\creditos.cpp
-	"creditos.h"
+1731038330 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\creditos.cpp
 
 1730859359 d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\creditos.h
 	<iostream>
@@ -20,8 +19,7 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1730862167 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\main.cpp
-	<iostream>
+1731186946 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\main.cpp
 	<ctime>
 	<windows.h>
 	"menu.h"
@@ -43,21 +41,19 @@
 	<string>
 	"rlutil.h"
 
-1731024374 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\menu.cpp
-	"menu.h"
+1731171265 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\menu.cpp
 
 1730845658 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\unjugador.cpp
 	"unJugador.h"
 
-1731023603 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\estadistica.cpp
-	"estadistica.h"
+1731171382 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\estadistica.cpp
 
 1731021676 d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\estadistica.h
 	<iostream>
 	<string>
 	"rlutil.h"
 
-1731030735 d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\juego.h
+1731039493 d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\juego.h
 	<string>
 	<iostream>
 	"rlutil.h"

@@ -18,11 +18,7 @@ int tirarDado();
 
 void tiradaDeDados(int vDados[], int cantidad);
 
-void mostrarDados(int vDados[], int cantidad);
-
 void tiradaBloqueadores(int vDados[], int cantidad);
-
-void mostrarBloqueadores(int vDados[], int cantidad);
 
 bool estaBloqueado(int dado, int bloqueadores[], int cantidadBloqueadores);
 
@@ -31,8 +27,6 @@ int removerBloqueados(int vDados[], int cantidad, int bloqueadores[], int cantid
 int calcularPuntaje(int vDados[], int cantidad, int bloqueadores[], int cantidadBloqueadores);
 
 int duplicaOpierde(int vDados[], int cantidad, int bloqueadores[], int cantidadBloqueadores);
-
-void imprimirDado(int nroDado);
 
 int imprimirEncabezado(int nroRonda, string jugador, int puntosTotales, int puntosRonda, int bloqueadores[], int cantidadBloqueadores);
 

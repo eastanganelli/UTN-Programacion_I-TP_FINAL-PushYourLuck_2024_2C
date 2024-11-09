@@ -8,8 +8,8 @@ using namespace std;
 int main(){
     int opcion;
     const int CANTIDAD_MAXIMA_JUGADORES = 2;
-    string jugadorMejorPuntaje = "Ariel";
-    int mejorPuntaje = 144;
+    string jugadorMejorPuntaje = "Vacio";
+    int mejorPuntaje = 0;
 
     srand(time(0));
     SetConsoleOutputCP(CP_UTF8);
