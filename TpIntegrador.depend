@@ -1,0 +1,67 @@
+# depslib dependency file v1.0
+1731023155 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\creditos.cpp
+	"creditos.h"
+
+1730859359 d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\creditos.h
+	<iostream>
+	"rlutil.h"
+
+1730757155 d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1730862167 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\main.cpp
+	<iostream>
+	<ctime>
+	<windows.h>
+	"menu.h"
+
+1731023770 d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\menu.h
+	<iostream>
+	"rlutil.h"
+	"juego.h"
+	"estadistica.h"
+	"creditos.h"
+
+1730821402 d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\unjugador.h
+	<string>
+	<iostream>
+	"rlutil.h"
+
+1730757154 d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\dosjugadores.h
+	<iostream>
+	<string>
+	"rlutil.h"
+
+1731024374 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\menu.cpp
+	"menu.h"
+
+1730845658 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\unjugador.cpp
+	"unJugador.h"
+
+1731023603 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\estadistica.cpp
+	"estadistica.h"
+
+1731021676 d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\estadistica.h
+	<iostream>
+	<string>
+	"rlutil.h"
+
+1731030735 d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\juego.h
+	<string>
+	<iostream>
+	"rlutil.h"
+
+1731031909 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\juego.cpp
+	"juego.h"
+
