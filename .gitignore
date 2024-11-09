@@ -11,6 +11,13 @@ CTestTestfile.cmake
 _deps
 CMakeUserPresets.json
 
+# specific to CodeBlocks IDE
+*.layout
+*.depend
+# generated directories
+bin/
+obj/
+
 # Prerequisites
 *.d
 
