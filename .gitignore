@@ -17,6 +17,7 @@ CMakeUserPresets.json
 # generated directories
 bin/
 obj/
+build/
 
 # Prerequisites
 *.d
