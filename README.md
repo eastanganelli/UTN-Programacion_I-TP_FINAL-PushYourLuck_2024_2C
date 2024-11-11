@@ -6,7 +6,7 @@
 ![Alt Text](https://i.imgur.com/MNIGyjq.gif)
 
 <br>
-1. Resumen del Juego: 
+### Resumen del Juego: 
 
 ```plaintext
 Nombre del juego: Greedy
@@ -20,7 +20,7 @@ Público objetivo: Fans de juegos retro.
 Descripción breve: Un juego basado en el clásico Push Your Luck de DOS, reimaginado para una nueva generación de jugadores, donde la estrategia y la suerte se combinan para ser un ganador o un perdedor.
 ```
 
-2. Aspectos técnicos:
+### Aspectos técnicos:
 
 Motor de juego: Ninguno.
 
@@ -30,8 +30,8 @@ IDE: Code::Blocks
 
 Librerías: <a href="https://github.com/tapio/rlhttps://github.com/tapio/rlutilutil" target="_blank">rlutil by Tapio</a>
 
-Version con Bot: ---
-    
-3. Integrantes
+Version con Bot: [Greedy con Bot](https://github.com/eastanganelli/UTN-Programacion_I-TP_FINAL-PushYourLuck_2024_2C/tree/con_bot)
+
+### Integrantes
 * Francisco Daniel Salas
 * Ezequiel Augusto Stanganelli
