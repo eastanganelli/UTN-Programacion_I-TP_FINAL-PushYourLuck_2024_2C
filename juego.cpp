@@ -115,7 +115,7 @@ string ingresarNombre(bool soloJugador, int indice, int posX, int posY) {
     cout << " ";
 
     rlutil::setColor(rlutil::BLUE);
-    cin>>nombre;
+    cin >> nombre;
     rlutil::setColor(rlutil::WHITE);
     return nombre;
 }

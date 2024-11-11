@@ -1,6 +1,5 @@
 ﻿#include <iostream>
 #include <ctime>
-#include <windows.h>
 #include "menu.h"
 
 using namespace std;
@@ -12,7 +11,6 @@ int main(){
     int mejorPuntaje = 0;
 
     srand(time(0));
-    SetConsoleOutputCP(CP_UTF8);
 
     do {
         string nombres[CANTIDAD_MAXIMA_JUGADORES];

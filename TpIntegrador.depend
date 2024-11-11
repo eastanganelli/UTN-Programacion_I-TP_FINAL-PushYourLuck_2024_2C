@@ -19,9 +19,8 @@
 	<sys/types.h>
 	<sys/time.h>
 
-1731186946 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\main.cpp
+1731193576 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\main.cpp
 	<ctime>
-	<windows.h>
 	"menu.h"
 
 1731023770 d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\menu.h
@@ -41,7 +40,7 @@
 	<string>
 	"rlutil.h"
 
-1731171265 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\menu.cpp
+1731359218 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\menu.cpp
 
 1730845658 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\unjugador.cpp
 	"unJugador.h"
@@ -53,11 +52,10 @@
 	<string>
 	"rlutil.h"
 
-1731039493 d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\juego.h
+1731187264 d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\juego.h
 	<string>
 	<iostream>
 	"rlutil.h"
 
-1731031909 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\juego.cpp
-	"juego.h"
+1731262293 source:d:\ezequ\documents\utn\tecnicatura sup en des. soft\programacion_1\tp_final_v2\juego.cpp
 

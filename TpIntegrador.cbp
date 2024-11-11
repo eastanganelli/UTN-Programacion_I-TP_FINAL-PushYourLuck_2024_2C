@@ -36,11 +36,11 @@
 		<Unit filename="creditos.h" />
 		<Unit filename="estadistica.cpp" />
 		<Unit filename="estadistica.h" />
+		<Unit filename="juego.cpp" />
+		<Unit filename="juego.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="menu.cpp" />
 		<Unit filename="menu.h" />
-		<Unit filename="unJugador.cpp" />
-		<Unit filename="unJugador.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
