@@ -1,16 +1,13 @@
 ﻿#include "menu.h"
 
-int seleccionarOpcion()
-{
+int seleccionarOpcion() {
     int opcion;
     rlutil::cls();
     rlutil::setColor(rlutil::WHITE);
     rlutil::setBackgroundColor(rlutil::LIGHTBLUE);
-    int anchoPantalla = rlutil::tcols();
-    int altoPantalla = rlutil::trows();
+    int anchoPantalla = rlutil::tcols(), altoPantalla = rlutil::trows();
     int anchoMenu = 30;
-    int posXMenu = (anchoPantalla - anchoMenu) / 2;
-    int posYMenu = altoPantalla / 4;
+    int posXMenu = (anchoPantalla - anchoMenu) / 2, posYMenu = altoPantalla / 4;
 
     rlutil::cls();
 
@@ -26,17 +23,19 @@ int seleccionarOpcion()
     rlutil::locate(posXMenu + 4, posYMenu + 5);
     cout << "2) MODO DOS JUGADORES";
     rlutil::locate(posXMenu + 4, posYMenu + 6);
-    cout << "3) ESTADISTICAS";
+    cout << "3) MODO JUGADOR VS BOT";
     rlutil::locate(posXMenu + 4, posYMenu + 7);
-    cout << "4) CREDITOS";
+    cout << "4) ESTADISTICAS";
     rlutil::locate(posXMenu + 4, posYMenu + 8);
+    cout << "5) CREDITOS";
+    rlutil::locate(posXMenu + 4, posYMenu + 9);
     cout << "0) SALIR";
 
-    rlutil::locate(posXMenu, posYMenu + 10);
+    rlutil::locate(posXMenu, posYMenu + 12);
     cout << "==============================";
 
     rlutil::setColor(rlutil::WHITE);
-    rlutil::locate(posXMenu + 4, posYMenu + 12);
+    rlutil::locate(posXMenu + 4, posYMenu + 13);
     cout << "Ingrese una opcion: ";
     rlutil::setColor(rlutil::WHITE);
 
@@ -50,24 +49,31 @@ int ejecutarOpcion(int opcion, string nombres[], int puntajes[], string jugadorM
     switch(opcion) {
     case 1:
         cantidadJugadores = 1;
-        juego(nombres, puntajes, cantidadJugadores);
+        juego(nombres, puntajes, cantidadJugadores, -1);
         informarJugadorGanador(nombres, puntajes, cantidadJugadores);
         rlutil::anykey();
         break;
 
     case 2:
         cantidadJugadores = 2;
-        juego(nombres, puntajes, cantidadJugadores);
+        juego(nombres, puntajes, cantidadJugadores, -1);
         informarJugadorGanador(nombres, puntajes, cantidadJugadores);
         rlutil::anykey();
         break;
 
     case 3:
-        imprimirEstadistica(jugadorMejorPuntaje, mejorPuntaje);
+        cantidadJugadores = 2;
+        juego(nombres, puntajes, cantidadJugadores, cantidadJugadores - 1);
+        informarJugadorGanador(nombres, puntajes, cantidadJugadores);
         rlutil::anykey();
         break;
 
     case 4:
+        imprimirEstadistica(jugadorMejorPuntaje, mejorPuntaje);
+        rlutil::anykey();
+        break;
+
+    case 5:
         mostrarCreditos();
         rlutil::anykey();
         break;

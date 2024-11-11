@@ -9,7 +9,7 @@
 1. Resumen del Juego: 
 
 ```plaintext
-Nombre del juego: Greedy
+Nombre del juego: Greedy con Bot
 
 Género: Push Your Luck
 
@@ -30,8 +30,10 @@ IDE: Code::Blocks
 
 Librerías: <a href="https://github.com/tapio/rlhttps://github.com/tapio/rlutilutil" target="_blank">rlutil by Tapio</a>
 
-Version con Bot: ---
+Version sin Bot: [Greedy][1] 
     
 3. Integrantes
 * Francisco Daniel Salas
 * Ezequiel Augusto Stanganelli
+
+  [1]: https://github.com/eastanganelli/UTN-Programacion_I-TP_FINAL-PushYourLuck_2024_2C

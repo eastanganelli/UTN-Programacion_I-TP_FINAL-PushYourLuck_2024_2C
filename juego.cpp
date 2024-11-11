@@ -71,15 +71,21 @@ void tiradaBloqueadores(int vDados[], int cantidad){
     }
 }
 
-void cargarJugadores(string nombres[], int cantidadJugadores) {
+void cargarJugadores(string nombres[], int cantidadJugadores, bool conBot) {
     rlutil::setColor(rlutil::WHITE);
     const int anchoPantalla = rlutil::tcols(), altoPantalla = rlutil::trows();
     const int anchoEncabezado = 40, altoEncabezado = 5;
     int posX = (anchoPantalla - anchoEncabezado) / 2,
         posY = (altoPantalla - altoEncabezado) / 2;
-    const bool soloJugador = cantidadJugadores < 2;
+    bool soloJugador = cantidadJugadores < 2;
     int i = 0;
     string nombre = "\0", textoImprimir = "\0";
+
+    if(conBot) {
+        nombres[cantidadJugadores - 1] = "LuckyBot";
+        cantidadJugadores = 1;
+        soloJugador = true;
+    }
 
     rlutil::locate(posX, posY);
     rlutil::setBackgroundColor(rlutil::CYAN);
@@ -120,13 +126,13 @@ string ingresarNombre(bool soloJugador, int indice, int posX, int posY) {
     return nombre;
 }
 
-void juego(string nombres[], int puntajes[], int cantidadJugadores) {
+void juego(string nombres[], int puntajes[], int cantidadJugadores, int indexBot) {
     const int CANTIDAD_RONDAS = 6, CANTIDAD_DADOS = 5, CANTIDAD_BLOQUEADORES = 2;
     int dados[CANTIDAD_DADOS];
     char seguirJugando = 's';
     int ronda = 1, jugadorActual = 0;
 
-    cargarJugadores(nombres, cantidadJugadores);
+    cargarJugadores(nombres, cantidadJugadores, indexBot != -1);
 
     while(ronda <= CANTIDAD_RONDAS) {
         rlutil::setColor(rlutil::WHITE);
@@ -134,6 +140,7 @@ void juego(string nombres[], int puntajes[], int cantidadJugadores) {
             int cantidadDadosActual = CANTIDAD_DADOS, puntajeRonda = 0;
             int bloqueadores[CANTIDAD_BLOQUEADORES] = { 0 };
             int posYCursor = 0, posYCursorFila = 0, tirada = 1, valorMutiplicador;
+            bool estaJugandoElBot = jugadorActual == indexBot;
 
             tiradaBloqueadores(bloqueadores, CANTIDAD_BLOQUEADORES);
             posYCursor = imprimirEncabezado(ronda, nombres[jugadorActual], puntajes[jugadorActual], puntajeRonda, bloqueadores, CANTIDAD_BLOQUEADORES);
@@ -153,7 +160,7 @@ void juego(string nombres[], int puntajes[], int cantidadJugadores) {
                 }
 
                 (void)imprimirEncabezado(ronda, nombres[jugadorActual], puntajes[jugadorActual], puntajeRonda, bloqueadores, CANTIDAD_BLOQUEADORES);
-                seguirJugando = imprimirTabla(posYCursorFila, tirada, dados, cantidadDadosActual, CANTIDAD_DADOS, bloqueadores, CANTIDAD_BLOQUEADORES, puntajeRonda, valorMutiplicador);
+                seguirJugando = imprimirTabla(posYCursorFila, tirada, dados, cantidadDadosActual, CANTIDAD_DADOS, bloqueadores, CANTIDAD_BLOQUEADORES, puntajeRonda, valorMutiplicador, estaJugandoElBot);
                 cantidadDadosActual = removerBloqueados(dados, cantidadDadosActual, bloqueadores, CANTIDAD_BLOQUEADORES);
 
                 if (cantidadDadosActual > 0 && (seguirJugando == 's' || seguirJugando == 'S')){
@@ -252,7 +259,6 @@ int imprimirEncabezado(int nroRonda, string jugador, int puntosTotales, int punt
     cout << "Bloqueadores |";
     for(int i = 0; i < cantidadBloqueadores; i++) {
         cout << " ";
-        // imprimirDado(bloqueadores[i]);
         cout << bloqueadores[i];
         cout << " |";
     }
@@ -260,7 +266,7 @@ int imprimirEncabezado(int nroRonda, string jugador, int puntosTotales, int punt
     return posYEncabezado + 6;
 }
 
-char imprimirTabla(int posY, int nroTirada, int dados[], int cantidadDados, int cantidadTotal, int bloqueadores[], int cantidadBloqueadores, int puntos, int estado) {
+char imprimirTabla(int posY, int nroTirada, int dados[], int cantidadDados, int cantidadTotal, int bloqueadores[], int cantidadBloqueadores, int puntos, int estado, bool juegaBot) {
     rlutil::setColor(rlutil::WHITE);
     char seguirJugando = '\0';
     const int anchoPantalla = rlutil::tcols(),
@@ -325,14 +331,28 @@ char imprimirTabla(int posY, int nroTirada, int dados[], int cantidadDados, int 
         cout << "s";
         seguirJugando = 's';
     } else if(estado == 1 && cantidadDados > 0) {
-        do {
-            cin >> seguirJugando;
-            if((seguirJugando == 's'|| seguirJugando == 'S') || (seguirJugando == 'n' || seguirJugando == 'N')) {
-                break;
-            }
-            rlutil::locate(posXEncabezado + 36, posY + 2);
-        } while((seguirJugando != 's'|| seguirJugando != 'S') && (seguirJugando != 'n' || seguirJugando != 'N'));
+        if(juegaBot) {
+            seguirJugando = botSiONo();
+            cout << seguirJugando;
+        } else {
+            do {
+                cin >> seguirJugando;
+                if((seguirJugando == 's'|| seguirJugando == 'S') || (seguirJugando == 'n' || seguirJugando == 'N')) {
+                    break;
+                }
+                rlutil::locate(posXEncabezado + 36, posY + 2);
+            } while((seguirJugando != 's'|| seguirJugando != 'S') && (seguirJugando != 'n' || seguirJugando != 'N'));
+        }
     }
     rlutil::locate(posXEncabezado, posY + 4);
     return seguirJugando;
+}
+
+char botSiONo() {
+    float porcentaje = (rand() % 100 + 1) / 100.0;
+
+    if(porcentaje > 0.7) {
+        return 'n';
+    }
+    return 's';
 }
