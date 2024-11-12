@@ -372,8 +372,12 @@ char imprimirTabla(int posY, int nroTirada, int dados[], int cantidadDados, int 
         if(j < cantidadDados) {
             rlutil::locate(auxPosXFila, posY + 2);
             if(estaBloqueado(dados[j], bloqueadores, cantidadBloqueadores)) {
+                // Si esta bloqueado, imprime en rojo.
+                // 0: Todos dados bloqueados.
                 rlutil::setColor(rlutil::RED);
             } else if(estado == 2) {
+                // Si es 2, imprime en Negro.
+                // 2: Todos dados iguales.
                 rlutil::setColor(rlutil::BLACK);
             }
             cout << dados[j];
@@ -398,6 +402,10 @@ char imprimirTabla(int posY, int nroTirada, int dados[], int cantidadDados, int 
         cout << "s";
         seguirJugando = 's';
     } else if(estado == 1 && cantidadDados > 0) {
+        /*
+         * Valida la respuesta del jugador.
+         * Si la respuesta no es 's' o 'n', vuelve a pedir la respuesta.
+        */
         do {
             cin >> seguirJugando;
             if((seguirJugando == 's'|| seguirJugando == 'S') || (seguirJugando == 'n' || seguirJugando == 'N')) {
