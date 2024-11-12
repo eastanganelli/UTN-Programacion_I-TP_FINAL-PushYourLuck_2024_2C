@@ -1,5 +1,8 @@
 ﻿#include "creditos.h"
 
+/*
+ * Muestra los creditos del juego
+*/
 void mostrarCreditos() {
     rlutil::cls();
     rlutil::setColor(rlutil::WHITE);
@@ -47,6 +50,4 @@ void mostrarCreditos() {
     cout << "31723";
 
     rlutil::setColor(rlutil::WHITE);
-    cout << endl << endl << endl;
-
 }

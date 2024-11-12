@@ -1,5 +1,11 @@
 ﻿#include "juego.h"
 
+/*
+ * Calcula el puntaje de una tirada de dados.
+ * Recibe un listado de dados y la cantidad de mismos.
+ * Tambien recibe el listado de bloqueadores y la cantidad.
+ * Retorna un entero con el puntaje de la tirada sin sumar los bloqueados.
+*/
 int calcularPuntaje(int vDados[], int cantidad, int bloqueadores[], int cantidadBloqueadores){
     int puntos=0, repetidoDuplica=0, cantidadBloqueados=0;
 
@@ -12,6 +18,15 @@ int calcularPuntaje(int vDados[], int cantidad, int bloqueadores[], int cantidad
     return puntos;
 }
 
+/*
+ * Calcula el multiplicador de la tirada.
+ * Recibe un listado de dados y la cantidad de mismo,
+ * un listado de bloqueadores y la cantidad de mismos, y
+ * retorna un entero con el multiplicador.
+ * 0: Se bloquearon todos los dados.
+ * 1: No hay repetidos.
+ * 2: Todos los dados son iguales.
+*/
 int duplicaOpierde(int vDados[], int cantidad, int bloqueadores[], int cantidadBloqueadores) {
     int multiplicador = 1, repetidoDuplica = 0, cantidadBloqueados = 0;
     for(int i=0; i<cantidad; i++){
@@ -38,6 +53,12 @@ int duplicaOpierde(int vDados[], int cantidad, int bloqueadores[], int cantidadB
     return multiplicador;
 }
 
+/*
+ * Remueve los dados bloqueados.
+ * Recibe un listado de dados y la cantidad de mismos,
+ * un listado de bloqueadores y la cantidad de mismos, y
+ * retorna la cantidad de dados actuales.
+*/
 int removerBloqueados(int vDados[], int cantidad, int bloqueadores[], int cantidadBloqueadores) {
     int removidosDados = cantidad;
     for(int i=0; i<cantidad; i++){
@@ -48,6 +69,11 @@ int removerBloqueados(int vDados[], int cantidad, int bloqueadores[], int cantid
     return removidosDados;
 }
 
+/*
+ * Verifica si un dado esta bloqueado.
+ * Recibe el dado a verificar y
+ * el listado y la cantidad de bloqueadores.
+*/
 bool estaBloqueado(int dado, int bloqueadores[], int cantidadBloqueadores) {
     for(int j=0; j<cantidadBloqueadores; j++){
         if(dado ==  bloqueadores[j]) {
@@ -57,20 +83,33 @@ bool estaBloqueado(int dado, int bloqueadores[], int cantidadBloqueadores) {
     return false;
 }
 
+/*
+ * Genera un dado.
+*/
 int tirarDado() { return rand() % 6 + 1; }
 
+/*
+ * Realiza la tirada de dados.
+*/
 void tiradaDeDados(int vDados[], int cantidad){
     for(int i=0; i<cantidad; i++){
         vDados[i] = tirarDado();
     }
 }
 
+/*
+ * Realiza la tirada de dados bloqueadores.
+*/
 void tiradaBloqueadores(int vDados[], int cantidad){
     for(int i=0; i<cantidad; i++){
         vDados[i] = tirarDado();
     }
 }
 
+/*
+ * Carga los nombres de los jugadores segun la cantidad.
+ * Verifica si es un jugador o multijugador o jugador vs bot.
+*/
 void cargarJugadores(string nombres[], int cantidadJugadores) {
     rlutil::setColor(rlutil::WHITE);
     const int anchoPantalla = rlutil::tcols(), altoPantalla = rlutil::trows();
@@ -99,6 +138,9 @@ void cargarJugadores(string nombres[], int cantidadJugadores) {
     rlutil::cls();
 }
 
+/*
+ * Genera el ingreso del nombre del jugador.
+*/
 string ingresarNombre(bool soloJugador, int indice, int posX, int posY) {
     string nombre;
 
@@ -120,6 +162,14 @@ string ingresarNombre(bool soloJugador, int indice, int posX, int posY) {
     return nombre;
 }
 
+/*
+ * Inicia el juego.
+ * Recibe los nombres, los puntajes y la cantidad de jugadores.
+ * Inicia el juego y recorre las rondas.
+ * Imprime el encabezado y la tabla.
+ * Realiza las tiradas y calcula los puntajes.
+ * Actualiza los puntajes.
+*/
 void juego(string nombres[], int puntajes[], int cantidadJugadores) {
     const int CANTIDAD_RONDAS = 6, CANTIDAD_DADOS = 5, CANTIDAD_BLOQUEADORES = 2;
     int dados[CANTIDAD_DADOS];
@@ -172,6 +222,12 @@ void juego(string nombres[], int puntajes[], int cantidadJugadores) {
     }
 }
 
+/*
+ * Informa el jugador ganador.
+ * Recibe los nombres, los puntajes y la cantidad de jugadores.
+ * Imprime el encabezado y los resultados.
+ * Imprime el nombre del jugador ganador en verde.
+*/
 void informarJugadorGanador(string nombres[], int puntajes[], int cantidadJugadores) {
     rlutil::setColor(rlutil::WHITE);
     const int anchoPantalla = rlutil::tcols(), altoPantalla = rlutil::trows();
@@ -223,6 +279,12 @@ void informarJugadorGanador(string nombres[], int puntajes[], int cantidadJugado
     }
 }
 
+/*
+ * Imprime el encabezado de la ronda.
+ * Recibe el numero de ronda, el nombre del jugador, los puntos totales,
+ * los puntos de la ronda, los bloqueadores y la cantidad de bloqueadores.
+ * Retorna la posicion en Y.
+*/
 int imprimirEncabezado(int nroRonda, string jugador, int puntosTotales, int puntosRonda, int bloqueadores[], int cantidadBloqueadores) {
     rlutil::setColor(rlutil::WHITE);
     const int anchoPantalla = rlutil::tcols(), altoPantalla = rlutil::trows();
@@ -260,6 +322,17 @@ int imprimirEncabezado(int nroRonda, string jugador, int puntosTotales, int punt
     return posYEncabezado + 6;
 }
 
+/*
+ * Imprime la tabla de los dados.
+ * Recibe la posicion en Y, el numero de tirada, los dados,
+ * la cantidad de dados, la cantidad total de dados, los bloqueadores,
+ * la cantidad de bloqueadores, los puntos y el estado.
+ * Retorna un char con la respuesta del jugador.
+ * s: Sigue jugando.
+ * n: No sigue jugando.
+ * Si el estado es 0, jugada bloqueada completa, imprime n.
+ * Si el estado es 2, jugada duplicada y con tirada obligatoria, imprime s.
+*/
 char imprimirTabla(int posY, int nroTirada, int dados[], int cantidadDados, int cantidadTotal, int bloqueadores[], int cantidadBloqueadores, int puntos, int estado) {
     rlutil::setColor(rlutil::WHITE);
     char seguirJugando = '\0';

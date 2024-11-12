@@ -45,30 +45,30 @@ int seleccionarOpcion()
 }
 
 int ejecutarOpcion(int opcion, string nombres[], int puntajes[], string jugadorMejorPuntaje, int mejorPuntaje) {
-    int cantidadJugadores = -1;
+    int cantidadJugadores = -1; // Cantidad de jugadores
 
     switch(opcion) {
     case 1:
-        cantidadJugadores = 1;
-        juego(nombres, puntajes, cantidadJugadores);
-        informarJugadorGanador(nombres, puntajes, cantidadJugadores);
+        cantidadJugadores = 1; // Cantidad de jugadores para el modo un jugador
+        juego(nombres, puntajes, cantidadJugadores); // Inicia el juego
+        informarJugadorGanador(nombres, puntajes, cantidadJugadores); // Informa el jugador ganador
         rlutil::anykey();
         break;
 
     case 2:
-        cantidadJugadores = 2;
-        juego(nombres, puntajes, cantidadJugadores);
-        informarJugadorGanador(nombres, puntajes, cantidadJugadores);
+        cantidadJugadores = 2; // Cantidad de jugadores para el modo dos jugadores
+        juego(nombres, puntajes, cantidadJugadores); // Inicia el juego
+        informarJugadorGanador(nombres, puntajes, cantidadJugadores); // Informa el jugador ganador
         rlutil::anykey();
         break;
 
     case 3:
-        imprimirEstadistica(jugadorMejorPuntaje, mejorPuntaje);
+        imprimirEstadistica(jugadorMejorPuntaje, mejorPuntaje); // Imprime la estadistica del jugador con mejor puntaje
         rlutil::anykey();
         break;
 
     case 4:
-        mostrarCreditos();
+        mostrarCreditos(); // Muestra los creditos
         rlutil::anykey();
         break;
 
@@ -82,9 +82,15 @@ int ejecutarOpcion(int opcion, string nombres[], int puntajes[], string jugadorM
 
     }
 
+    // Retorna la cantidad de jugadores
     return cantidadJugadores;
 }
 
+/*
+ * Función que imprime mensaje estilo un modal.
+ * Recibe titulo, mensaje y tipo.
+ * Tipo: 1 (Black: Normal), 2 (Red: Error), 3 (Yellow: Advertencia).
+*/
 void modalMensaje(string titulo, string msj, int tipo) {
     rlutil::cls();
     rlutil::setColor(rlutil::WHITE);
@@ -104,12 +110,16 @@ void modalMensaje(string titulo, string msj, int tipo) {
     rlutil::setBackgroundColor(rlutil::LIGHTBLUE);
 
     switch(tipo) {
-    case 1:
+    case 1: // Normal
         rlutil::setColor(rlutil::BLACK);
         break;
-    case 2:
+    case 2: // Error
         rlutil::setBackgroundColor(rlutil::BLACK);
         rlutil::setColor(rlutil::RED);
+        break;
+    case 3: // Advertencia
+        rlutil::setBackgroundColor(rlutil::BLACK);
+        rlutil::setColor(rlutil::YELLOW);
         break;
     }
 

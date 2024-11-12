@@ -1,5 +1,12 @@
 ﻿#include "estadistica.h"
 
+/*
+ * Actualiza la estadistica del jugador con mejor puntaje
+ * Recibe el puntaje actual del jugador con mejor puntaje,
+ * el listado de puntajes de los jugadores
+ * y la cantidad de jugadores.
+ * Devuelve indice del jugador con mejor puntaje
+*/
 int actualizarEstadistica(int actual, int puntajes[], int cantidad) {
     int i = 0, indice = -1, valorMax = actual;
     do {
@@ -12,6 +19,9 @@ int actualizarEstadistica(int actual, int puntajes[], int cantidad) {
     return indice;
 }
 
+/*
+ * Imprime la estadistica del jugador con mejor puntaje
+*/
 void imprimirEstadistica(string Jugador, int puntaje) {
     rlutil::cls();
     rlutil::setColor(rlutil::WHITE);
@@ -42,5 +52,4 @@ void imprimirEstadistica(string Jugador, int puntaje) {
     cout << puntaje;
 
     rlutil::setColor(rlutil::WHITE);
-    cout << endl << endl << endl;
 }
