@@ -5,26 +5,19 @@
 
 ![Alt Text](https://i.imgur.com/MNIGyjq.gif)
 
-<br>
-### Resumen del Juego: 
 
-```plaintext
-Nombre del juego: Greedy
+### Resumen del Juego:
 
-Género: Push Your Luck
-
-Plataforma: PC (Windows, Linux, macOS)
-
-Público objetivo: Fans de juegos retro.
-
-Descripción breve: Un juego basado en el clásico Push Your Luck de DOS, reimaginado para una nueva generación de jugadores, donde la estrategia y la suerte se combinan para ser un ganador o un perdedor.
-```
+<p>Nombre del juego: Greedy</p>
+<p>Género: Push Your Luck</p>
+<p>Plataforma: PC (Windows, Linux, macOS)</p>
+<p>Público objetivo: Fans de juegos retro.</p>
+<p>Descripción breve: Un juego basado en el clásico Push Your Luck de DOS, reimaginado para una nueva generación de jugadores, donde la estrategia y la suerte se combinan para ser un ganador o un perdedor.</p>
 
 ### Aspectos técnicos:
 
-Motor de juego: Ninguno.
-
-Lenguaje de programación: C++
+<p>Motor de juego: Ninguno.</p>
+<p>Lenguaje de programación: C++</p>
 
 IDE: Code::Blocks
 
